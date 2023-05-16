@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Styling for the React table */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  color: #4a5568;
+}
+th{
+  cursor: pointer;
+}
+
+table th,
+table td {
+  padding: 0.75rem;
+  vertical-align: center;
+  /* border-top-width: 1px; */
+  border-top-color: #e2e8f0;
+}
+
+/* table th{
+  text-align: center;
+  font-weight: bold;
+  background-color: #fff;
+} */
+
+table td {
+  
+}
+
+table tr:nth-child(even) td {
+  background-color: #f7fafc;
+}
+
+.table-head{
+  font-size: 1rem;
+}
+
+
+
+.heading{
+  margin: 10px 100px;
+}
+.table-container{
+  border: 1px solid rgba(128, 128, 128, 0.54);
+  margin: 0 100px;
+  margin-bottom: 50px;
+  border-radius: 10px;
+}
+.menu-box{
+  margin: 20px 100px;
+}
+.container-header{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 15px;
+  align-items: center;
+}
+.header-subtitle{
+  padding: 3px 6px;
+  border-radius: 10px;
+}
+
+.header-description{
+  color: grey;
+}
+.header-buttons button{
+  padding: 10px 20px;
+  border-radius: 10px ;
+  margin: 0px 5px;
+}
+
+/* .csv-btn{
+  border: 1px solid black;
+} */
+.name-column{
+  display: flex;
+  align-items: center;
+}
+.user-img{
+  height: 50px;
+  border-radius: 50%;
+}
+.rounder-dot{
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  /* background-color: black; */
+  border-radius: 50%;
+  margin: 0px 5px;
+  
+}
+#active-user{
+  padding: 5px 10px;
+  border-radius: 20px;
+  background-color:#E9FFEF;
+}
+#active-user span{
+  background-color: #006400;
+
+}
+#inactive-user{
+  padding: 5px 10px;
+  border-radius: 20px;
+  background-color: #E0E0E0	;
+
+}
+#inactive-user span{
+  background-color: gray;
+
+}
+
+
+.wrapper{
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.432);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+.modal-dialog{
+  width: 500px;
+  height: 450px;
+  padding: 20px;
+  background-color: white;
+  position: relative;
+  animation: fadeInDown 0.8s;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px 1px rgba(0,0,0,0.5);
+}
+
+@keyframes fadeInDown {
+  0% {
+     opacity: 0;
+     transform: translateY(-150px);
+  }
+  100% {
+     opacity: 1;
+     transform: translateY(0);
+  }
+}
+
+

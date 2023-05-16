@@ -1,0 +1,44 @@
+/* import React from 'react';
+import { User } from './columns';
+
+type Props = {
+  users: User[];
+};
+
+const TableHandler: React.FC<Props> = ({ users }) => {
+  const downloadAsCsv = () => {
+    // ... CSV download logic
+  };
+
+  return (
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>Avatar</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map(user => (
+            <tr key={user.id}>
+              <td>
+                <img src={user.avatar} alt="Avatar" width="50" height="50" />
+              </td>
+              <td>{user.name}</td>
+              <td>{user.email}</td>
+              <td>{user.status}</td>
+              <td>{user.role}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <button onClick={downloadAsCsv}>Download CSV</button>
+    </div>
+  );
+};
+
+export default TableHandler; */
