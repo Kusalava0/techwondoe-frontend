@@ -76,6 +76,7 @@ table tr:nth-child(even) td {
   height: 50px;
   border-radius: 50%;
 }
+
 .rounder-dot{
   display: inline-block;
   width: 10px;
@@ -84,6 +85,8 @@ table tr:nth-child(even) td {
   margin: 0px 5px;
   
 }
+
+/* styling according o the status of the user */
 #active-user{
   padding: 5px 10px;
   border-radius: 20px;
@@ -120,6 +123,7 @@ table tr:nth-child(even) td {
   justify-content: center;
   
 }
+/* styles for the add user form */
 .modal-dialog{
   width: 500px;
   height: 450px;

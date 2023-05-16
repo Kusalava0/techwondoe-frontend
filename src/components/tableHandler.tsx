@@ -10,6 +10,7 @@ import Paginate from './PaginationTable';
 const TableHandler: React.FC = () => {
     const [data, setData] = useState<User[]>([]);
 
+    // Fetching the data from the mock user API JSONPlaceHolder
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios.get('https://jsonplaceholder.typicode.com/users');
@@ -25,7 +26,7 @@ const TableHandler: React.FC = () => {
         fetchData();
     }, []);
 
-
+    // states declaration to create a new empty user and hold the form data given by the user
     const [isOpen, setIsOpen] = useState(false);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -65,10 +66,12 @@ const TableHandler: React.FC = () => {
         setIsOpen(false);
     };
 
+    // deleting the row from a table on click 
     const handleDelete = (id: number) => {
         setData((prevData) => prevData.filter((user) => user.id !== id));
     };
 
+    // edit the table cell values withot opening a form by giving the Status and Role ramdom values on clicking edit button
     const handleEdit = (id: number, updatedData: Partial<User>) => {
         setData((prevData) =>
             prevData.map((user) => {
@@ -83,7 +86,7 @@ const TableHandler: React.FC = () => {
         );
     };
 
-
+    // Download the JSON data in the form of comma seperated values i.e user.csv file
     const downloadAsCsv = () => {
         // Convert the user data to CSV format
         const csvContent = [
@@ -108,7 +111,9 @@ const TableHandler: React.FC = () => {
         URL.revokeObjectURL(link.href);
     };
 
-
+    // defining state to hold the checkboxes
+    // although the check boxes does not have any functionality such as bulk delete
+    // only for visually showcasing the selection of all rows
     const [selectedRows, setSelectedRows] = useState<number[]>([]);
 
     const handleRowSelect = (rowId: number) => {
@@ -121,7 +126,7 @@ const TableHandler: React.FC = () => {
         });
     };
 
-
+    // this is the function where we select all the rows on clicking the checkbox in the head row
     const handleSelectAll = (event: { target: { checked: any; }; }) => {
         if (event.target.checked) {
             // Select all rows
@@ -134,19 +139,19 @@ const TableHandler: React.FC = () => {
         }
     };
 
-
+    // defining the columns as a User type which can hold user data
     const columns: Column<User>[] = React.useMemo(() => COLUMNS, []);
-
+    // passing the type and data into a table insance to create a table
     const tableInstance = useTable<User>({ columns, data }, useSortBy);
-
+    // states to handling the react table and display the data aprropriately
     const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = tableInstance;
 
     return (
 
         <div>
             <h1 className='mt-4 text-2xl heading font-semibold text-left'>Company Settings</h1>
+            {/* replicating the settings button group provideed */}
             <div className='text-sm menu-box'>
-
                 <div className="btn-group inline-flex rounded-md shadow-sm" role="group" aria-label="Basic example">
                     <button type="button" className="px-4 py-2 text-md font-medium text-gray-900 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-300 hover:text-black focus:z-10 focus:ring-2 focus:ring-black focus:text-black ">General</button>
                     <button type="button" className="px-4 py-2 text-md font-medium text-gray-900 bg-gray-300 border-t border-b border-gray-200 hover:bg-gray-300 hover:text-black focus:z-10 focus:ring-2   focus:ring-black focus:text-black ">Users</button>
@@ -156,8 +161,10 @@ const TableHandler: React.FC = () => {
                 </div>
 
             </div>
+            {/* container which holds two divs which are: a details div about this section and the react table where the user data is present */}
             <div className="table-container">
                 <div>
+                    {/* Description of the Users tab */}
                     <div className="container-header p-2">
                         <div className="header-title text-left">
                             <h1 className="header-name text-2xl font-bold align-middle">Users <span className='header-subtitle text-xs font-bold bg-gray-100 text-gray-400 ml-1'>Users</span></h1>
@@ -252,18 +259,25 @@ const TableHandler: React.FC = () => {
 
                 </div>
                 <div className='myTable mt-2 pl-4'>
+                    {/* React Table */}
+                    {/* get the table properties such as the Headers defined in columns.tsx */}
                     <table {...getTableProps()} className='w-full text-sm text-left'>
                         <thead className='text-l text-gray-500'>
+                            {/* accessing those Headers and placing them as the table headings */}
                             {headerGroups.map((headerGroup) => (
+                                // function to return the row with headings
                                 <tr {...headerGroup.getHeaderGroupProps()} >
                                     <th>
+                                        {/* checkbox in the head row */}
                                         <input className='w-4 h-4'
                                             type="checkbox"
                                             checked={selectedRows.length === rows.length}
                                             onChange={handleSelectAll}
                                         />
                                     </th>
+                                    {/* function to apply the sortting to the columns */}
                                     {headerGroup.headers.map((column: any) => (
+                                        // sort by toggle that is sort on click on the head cells
                                         <th {...column.getHeaderProps(column.getSortByToggleProps())}>
 
                                             <div className='flex table-head'>{column.render('Header')}
@@ -276,12 +290,17 @@ const TableHandler: React.FC = () => {
 
                                 </tr>
                             ))}
+                            {/* head row completed */}
                         </thead>
+                        {/* rendering the users data into the table by typcasting the fetched data into type User */}
                         <tbody {...getTableBodyProps()}>
+                            {/* mapping an object into a row */}
                             {rows.map((row) => {
                                 prepareRow(row);
+                                // retrning the row element to the table and filling the appropriate data
                                 return (
                                     <tr {...row.getRowProps()} className='border-b items-center cursor-pointer hover:bg-slate-50'>
+                                        {/* accessing the id property and storing the rows selected via the checkboxes */}
                                         <td key={row.id}>
                                             <input className='w-4 h-4'
                                                 type="checkbox"
@@ -289,17 +308,21 @@ const TableHandler: React.FC = () => {
                                                 onChange={() => handleRowSelect(parseInt(row.id))}
                                             />
                                         </td>
+                                        {/* mapping the data to each cell with respect to their accessors */}
                                         {row.cells.map((cell) => {
                                             console.log(row)
                                             return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
                                         })}
                                         <td>
                                             <div className='edit-delete flex items-center justify-center'>
+                                                {/* implementing the handleDelete function written above to delete a row from the table */}
                                                 <button onClick={() => handleDelete(row.original.id)}
                                                     className="inline-flex items-center justify-center w-8 h-8 mr-2 text-black-100 transition-colors duration-150  rounded-3xl focus:shadow-outline hover:bg-red-600 hover:text-white">
                                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                                     </svg></button>
+                                                {/* implementing the edit function written above to edit the cell values of that partilar row */}
+                                                {/* no Popups or anyform the data is edited in random */}
                                                 <button
                                                     onClick={() =>
                                                         handleEdit(row.original.id, {

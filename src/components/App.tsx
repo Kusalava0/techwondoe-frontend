@@ -7,6 +7,7 @@ import './App.css'
 
 const App = () => {
 
+  // making an api call loggin the user data for quick checking purpose
   const [usersData, setUsersData] = useState([]);
   useEffect(() => {
     fetchData();
@@ -30,7 +31,7 @@ const App = () => {
     setAddUsersData([...addUsersData, user]);
   };
 
-  // console.log(usersData)
+  console.log(usersData)
   return (
     <div>
       {/* <Header></Header> */}

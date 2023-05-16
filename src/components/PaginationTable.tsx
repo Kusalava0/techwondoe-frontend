@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { PaginationControl } from 'react-bootstrap-pagination-control';
 import './table.css'
 
+// not implemented into the table
 const Paginate = () => {
     const [page, setPage] = useState(1)
 
