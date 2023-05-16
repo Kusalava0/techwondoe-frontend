@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react"
-import Table from "./table";
-import Header from "./header";
-// import { User, COLUMNS } from "./columns";
 import TableHandler from "./tableHandler";
-// import AddUserForm from "./addUser";
 import { User } from "./columns";
 import './App.css'
-import Paginate from "./PaginationTable";
+
 
 
 const App = () => {

@@ -329,9 +329,8 @@ const TableHandler: React.FC = () => {
                         </tbody>
 
                     </table>
-                    <Paginate></Paginate>
-
                 </div>
+                
             </div>
 
         </div>

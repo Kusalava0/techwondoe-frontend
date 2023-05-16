@@ -45,10 +45,10 @@ export const COLUMNS: Column<User>[] = [
         Header: 'Status',
         accessor: 'status',
         Cell: ({ value }) => (
-            <div className={'`badge` bg-slate-100 inline-block justify-center text-xs font-bold'} id={value === "Active" ? "active-user" : "inactive-user"}>
+            <span className={'`badge` bg-slate-100 inline-block justify-center text-xs font-bold'} id={value === "Active" ? "active-user" : "inactive-user"}>
                 <span className='rounder-dot pr-1'></span>
                 {value}
-            </div>
+            </span>
         ),
     },
     {
