@@ -39,7 +39,6 @@ export const COLUMNS: Column<User>[] = [
                 </div>
             </span>
         )
-        // accessor: d => customCell(d.date, d.date)
     },
     {
         Header: 'Status',
@@ -56,24 +55,6 @@ export const COLUMNS: Column<User>[] = [
         accessor: 'role',
         Cell: ({ value }) => <>{value}</>
     },
-    // {
-    //     Header: "Delete",
-    //     id: "delete",
-    //     accessor: (str) => "delete",
-
-    //     Cell: (tableProps: { row: { index: number; }; }) => (
-    //         <span onClick={(data) => {
-    //                 // ES6 Syntax use the rvalue if your data is an array.
-    //                 const dataCopy = [...data];
-    //                 // It should not matter what you name tableProps. It made the most sense to me.
-    //                 dataCopy.splice(tableProps.row.index, 1);
-    //                 setData(dataCopy);
-    //             }}
-    //         >
-    //             Delete
-    //         </span>
-    //     )
-    // }
 ];
 
 

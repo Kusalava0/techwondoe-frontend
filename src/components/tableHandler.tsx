@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useTable, Column, useSortBy } from 'react-table';
-// import AddUserForm from './addUser';
 import { User, COLUMNS } from './columns';
 import './table.css';
-// import 'unicons/dist/css/line.css';
 import { Icon } from '@iconify/react';
 import Paginate from './PaginationTable';
-
 
 
 const TableHandler: React.FC = () => {
@@ -111,6 +108,7 @@ const TableHandler: React.FC = () => {
         URL.revokeObjectURL(link.href);
     };
 
+
     const [selectedRows, setSelectedRows] = useState<number[]>([]);
 
     const handleRowSelect = (rowId: number) => {
@@ -168,7 +166,6 @@ const TableHandler: React.FC = () => {
 
                         <div className="header-buttons">
                             <button onClick={downloadAsCsv} className='csv-btn text-xs md:text-lg py-2 px-4 my-1 text-black bg-white rounded-xl hover:rounded-3xl hover:bg-gray-100 transition-all duration-300 border-2'><i className="uil uil-cloud-download"></i> Download CSV</button>
-                            {/* <button className='text-white text-xs md:text-lg my-1 bg-blue-500'> <i className="uil uil-plus"></i> Add User</button> */}
                             <button onClick={() => setIsOpen(true)} className='text-white text-xs md:text-lg my-1 bg-blue-500 rounded-xl hover:rounded-3xl hover:bg-black transition-all duration-300'> <i className="uil uil-plus"></i>Add User</button>
                             <div>
                                 {isOpen && (
@@ -236,10 +233,6 @@ const TableHandler: React.FC = () => {
                                                             </label>
 
                                                         </div>
-
-
-
-
                                                         <hr className='my-6' />
                                                         <div className="modal-footer flex justify-end">
                                                             <button onClick={() => setIsOpen(false)} className="px-3 mx-2 py-2 border rounded ">Cancel</button>
@@ -330,7 +323,7 @@ const TableHandler: React.FC = () => {
 
                     </table>
                 </div>
-                
+
             </div>
 
         </div>
